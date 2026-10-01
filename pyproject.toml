@@ -1,0 +1,60 @@
+[project]
+name = "flockladder"
+dynamic = ["version"]
+description = "Recovering the rules of a small Vicsek flock from positions alone, with honest uncertainty"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Gabriel Baglietto" }]
+dependencies = [
+    "imageio-ffmpeg>=0.5",
+    "ipython>=8",
+    "matplotlib>=3.8",
+    "numba>=0.60",
+    "numpy>=1.26",
+    "scipy>=1.11",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "src/flockladder/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/flockladder"]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.11",
+    "nbformat>=5.10",
+    "nbmake>=1.5",
+    "pre-commit>=3.8",
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+notebooks = [
+    "jupyterlab>=4.2",
+    "nbconvert>=7.16",
+]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "NPY"]
+
+[tool.ruff.lint.per-file-ignores]
+# Notebooks are exploratory prose with code: long f-strings, loop names and zips over matched
+# lists are fine there. Imports are still sorted and checked.
+"notebooks/*" = ["E501", "B905", "E741", "B007", "E702", "E703"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.mypy]
+files = ["src"]
+ignore_missing_imports = true
