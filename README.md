@@ -5,6 +5,10 @@ tell you.*
 
 by [Gabriel Baglietto](https://github.com/GabrielBaglietto)
 
+> **New to inference, or prefer a slower pace?** This article moves quickly and keeps its mathematics folded.
+> The [detailed explanation](EXPLANATION.md) develops the same ideas step by step, with every equation written
+> out and no prior knowledge of the field assumed.
+
 ![Forty particles at three noise levels](figures/three_noise_levels.gif)
 
 Simulating a flock is easy. Forty particles, each copying the average heading of its neighbours with some
@@ -29,9 +33,6 @@ questions and tools of inference from simulated data (a likelihood built by simu
 error bars, a posterior), each introduced at the point where it becomes necessary. None of the methods is new, and the
 estimation problem is deliberately simple: synthetic data, few particles, a known model. Where the methods come
 from, and research that goes much further, is in [Related work](#related-work).
-
-For a slower path through the same ideas, with the mathematics written out, see the
-[detailed explanation](EXPLANATION.md).
 
 > **Notation.** θ = (η, r, v₀) is the vector of the model's parameters: η the amplitude of the angular noise,
 > r the interaction radius (the unit of length), v₀ the speed (distance per step). The heading of particle i is
